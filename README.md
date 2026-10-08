@@ -18,7 +18,10 @@ Generate meaningful performance insights
 Python,
 Pandas,
 NumPy,
-CSV
+CSV,
+Excel,
+Sql,
+Power Bi
 
  Data Analyzed
 
