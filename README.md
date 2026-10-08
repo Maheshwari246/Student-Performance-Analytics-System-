@@ -46,7 +46,7 @@ The analyzed data can be used for visualization and reporting.
 
  Project Structure
  
-Student-Performance-Analytics-System/
+Student-Performance-Analytics-System
 │
 ├── student_performance.py
 ├── students.csv
