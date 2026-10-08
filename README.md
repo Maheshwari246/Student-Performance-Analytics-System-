@@ -15,9 +15,9 @@ Generate meaningful performance insights
 
  Technologies Used
 
-Python
-Pandas
-NumPy
+Python,
+Pandas,
+NumPy,
 CSV
 
  Data Analyzed
