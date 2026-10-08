@@ -4,13 +4,11 @@ import sqlite3
 
 from flask import Flask, render_template
 
-
 # ============================================================
 # FLASK APPLICATION
 # ============================================================
 
 app = Flask(__name__)
-
 
 # ============================================================
 # 1. STUDENT DATASET
@@ -58,7 +56,6 @@ data = {
 # Create DataFrame
 df = pd.DataFrame(data)
 
-
 # ============================================================
 # DATABASE
 # ============================================================
@@ -77,7 +74,6 @@ df = pd.read_sql_query(
     conn
 )
 
-
 # ============================================================
 # 2. DISPLAY TITLE
 # ============================================================
@@ -85,7 +81,6 @@ df = pd.read_sql_query(
 print("=" * 65)
 print("          STUDENT PERFORMANCE ANALYTICS SYSTEM")
 print("=" * 65)
-
 
 # ============================================================
 # 3. DISPLAY STUDENT DATA
@@ -95,7 +90,6 @@ print("\n")
 print("--------------- STUDENT DATA ---------------")
 
 print(df.to_string(index=False))
-
 
 # ============================================================
 # 4. SUBJECTS
@@ -108,13 +102,11 @@ subjects = [
     "JavaScript"
 ]
 
-
 # ============================================================
 # 5. TOTAL MARKS
 # ============================================================
 
 df["Total"] = df[subjects].sum(axis=1)
-
 
 # ============================================================
 # 6. AVERAGE MARKS
@@ -123,7 +115,6 @@ df["Total"] = df[subjects].sum(axis=1)
 df["Average"] = df[subjects].mean(axis=1)
 
 df["Average"] = df["Average"].round(2)
-
 
 # ============================================================
 # 7. GRADE FUNCTION
@@ -152,7 +143,6 @@ def calculate_grade(average):
 
 df["Grade"] = df["Average"].apply(calculate_grade)
 
-
 # ============================================================
 # 8. RESULT FUNCTION
 # ============================================================
@@ -165,9 +155,7 @@ def calculate_result(average):
     else:
         return "Fail"
 
-
 df["Result"] = df["Average"].apply(calculate_result)
-
 
 # ============================================================
 # 9. STUDENT PERFORMANCE
@@ -189,14 +177,12 @@ performance = df[
 
 print(performance.to_string(index=False))
 
-
 # ============================================================
 # 10. NUMPY ANALYSIS
 # ============================================================
 
 print("\n")
 print("---------------- ANALYSIS ----------------")
-
 
 # Subject-wise average
 subject_average = df[subjects].mean()
@@ -211,7 +197,6 @@ for subject in subjects:
         round(subject_average[subject], 2)
     )
 
-
 # ============================================================
 # 11. OVERALL CLASS AVERAGE
 # ============================================================
@@ -222,7 +207,6 @@ print(
     "\nOverall Class Average:",
     round(overall_average, 2)
 )
-
 
 # ============================================================
 # 12. HIGHEST TOTAL
@@ -235,7 +219,6 @@ print(
     highest_total
 )
 
-
 # ============================================================
 # 13. LOWEST TOTAL
 # ============================================================
@@ -246,7 +229,6 @@ print(
     "Lowest Total Marks:",
     lowest_total
 )
-
 
 # ============================================================
 # 14. TOP PERFORMER
@@ -265,7 +247,6 @@ print(
     top_average
 )
 
-
 # ============================================================
 # 15. LOWEST PERFORMER
 # ============================================================
@@ -281,7 +262,6 @@ print(
     "Lowest Performer:",
     lowest_student
 )
-
 
 # ============================================================
 # 16. HIGHEST ATTENDANCE
@@ -312,7 +292,6 @@ print(
     "%"
 )
 
-
 # ============================================================
 # 17. LOW ATTENDANCE STUDENTS
 # ============================================================
@@ -340,7 +319,6 @@ else:
         ].to_string(index=False)
     )
 
-
 # ============================================================
 # 18. PASSED STUDENTS
 # ============================================================
@@ -364,7 +342,6 @@ print(
     "Number of Failed Students:",
     len(failed_students)
 )
-
 
 # ============================================================
 # 19. SUBJECT-WISE TOP STUDENT
@@ -395,7 +372,6 @@ for subject in subjects:
         marks
     )
 
-
 # ============================================================
 # 20. GRADE ANALYSIS
 # ============================================================
@@ -406,7 +382,6 @@ print("-------------- GRADE ANALYSIS --------------")
 grade_count = df["Grade"].value_counts()
 
 print(grade_count)
-
 
 # ============================================================
 # 21. STUDENTS ABOVE CLASS AVERAGE
@@ -430,7 +405,6 @@ print(
     ].to_string(index=False)
 )
 
-
 # ============================================================
 # 22. STUDENT SEARCH FUNCTION
 # ============================================================
@@ -453,10 +427,8 @@ def search_student(student_id):
             result.to_string(index=False)
         )
 
-
 # Example search
 search_student(105)
-
 
 # ============================================================
 # 23. FINAL OUTCOME
@@ -508,7 +480,6 @@ print(
 
 print("=" * 65)
 
-
 # ============================================================
 # TOP 5 TOPPERS
 # ============================================================
@@ -533,7 +504,6 @@ print(
     ].to_string(index=False)
 )
 
-
 # ============================================================
 # SAVE CSV
 # ============================================================
@@ -544,7 +514,6 @@ df.to_csv(
 )
 
 print("\nstudents.csv created successfully!")
-
 
 # ============================================================
 # FLASK ROUTE
@@ -603,7 +572,6 @@ def home():
         low_attendance_students=low_attendance_students,
         grades=grades
     )
-
 
 # ============================================================
 # RUN FLASK APPLICATION
