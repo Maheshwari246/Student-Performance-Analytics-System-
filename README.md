@@ -20,7 +20,10 @@ Pandas,
 NumPy,
 CSV,
 Excel,
-Power Bi
+Power Bi,
+html,
+css,
+javascript
 
  Data Analyzed:
 
